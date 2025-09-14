@@ -1,0 +1,90 @@
+### Python ###
+# Виртуальные окружения / Virtual environments
+.venv/
+venv/
+env/
+env.bak/
+ENV/
+
+# Кэш Python и скомпилированные файлы / Python cache and compiled files
+pycache/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+*.egg
+.python-version
+pip-wheel-metadata/
+pip-delete-this-directory.txt
+
+# Файлы зависимостей / Dependency files
+*.manifest
+*.spec
+
+
+### IDE ###
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+*.swp
+*.swo
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Other IDEs
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+.vs/
+
+
+### Windows ###
+# Файлы Windows / Windows files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+*.lnk
+*.stackdump
+
+# Файлы кэша / Cache files
+[Tt]humbs.db
+
+
+### Тестовые данные / Test data ###
+test_data/
+coverage/
+htmlcov/
+.coverage
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+
+### Документация / Documentation ###
+docs/_build/
+
+### Дата файлы / Data files ###
+data/
