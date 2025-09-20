@@ -119,33 +119,35 @@
 ### Основные метрики
 
 <div align="center">
+
 <table>
-  <tr align="center">
-    <th>Метрика</th>
-    <th>Формула</th>
-    <th>Особенности</th>
-  </tr>
-  <tr align="center">
-    <td><strong>MSE</strong></td>
-    <td><code>(1/n) * Σ(yᵢ - ŷᵢ)²</code></td>
-    <td>Чувствительна к выбросам, дифференцируема</td>
-  </tr>
-  <tr align="center">
-    <td><strong>RMSE</strong></td>
-    <td><code>√MSE</code></td>
-    <td>Интерпретируема в единицах целевой переменной</td>
-  </tr>
-  <tr align="center">
-    <td><strong>MAE</strong></td>
-    <td><code>(1/n) * Σ|yᵢ - ŷᵢ|</code></td>
-    <td>Менее чувствительна к выбросам</td>
-  </tr>
-  <tr align="center">
-    <td><strong>R²</strong></td>
-    <td><code>1 - [Σ(yᵢ - ŷᵢ)² / Σ(yᵢ - ȳ)²]</code></td>
-    <td>Доля объяснённой дисперсии</td>
-  </tr>
+    <tr align="center">
+        <th>Метрика</th>
+        <th>Формула</th>
+        <th>Особенности</th>
+    </tr>
+    <tr align="center">
+        <td><strong>MSE</strong></td>
+        <td><code>(1/n) * Σ(yᵢ - ŷᵢ)²</code></td>
+        <td>Чувствительна к выбросам, дифференцируема</td>
+    </tr>
+    <tr align="center">
+        <td><strong>RMSE</strong></td>
+        <td><code>√MSE</code></td>
+        <td>Интерпретируема в единицах целевой переменной</td>
+    </tr>
+    <tr align="center">
+        <td><strong>MAE</strong></td>
+        <td><code>(1/n) * Σ|yᵢ - ŷᵢ|</code></td>
+        <td>Менее чувствительна к выбросам</td>
+    </tr>
+    <tr align="center">
+        <td><strong>R²</strong></td>
+        <td><code>1 - [Σ(yᵢ - ŷᵢ)² / Σ(yᵢ - ȳ)²]</code></td>
+        <td>Доля объяснённой дисперсии</td>
+    </tr>
 </table>
+
 </div>
 
 ### Дополнительные метрики
@@ -196,8 +198,9 @@
    - Label Encoding
 
 ### Особенности реализации
+Пример из кода:
+
 ```python
-# Scikit-learn пример
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -257,7 +260,8 @@ y_pred = model.predict(X_test)
 - **Статистическая значимость**: p-value < 0.05
 
 ### Важность признаков
-Сортировка признаков по абсолютному значению коэффициентов:
+Сортировка признаков по абсолютному значению коэффициентов, пример из кода:
+
 ```python
 feature_importance = pd.DataFrame({
     'feature': X.columns,
@@ -279,6 +283,8 @@ feature_importance = pd.DataFrame({
 Статистический метод для оценки неопределенности метрик через многократное ресэмплирование данных.
 
 ### Реализация бутстрапа
+Пример из кода:
+
 ```python
 from sklearn.utils import resample
 
@@ -293,6 +299,8 @@ for i in range(n_bootstraps):
 ```
 
 ### Расчет доверительных интервалов
+Пример из кода:
+
 ```python
 def calculate_confidence_interval(scores, confidence=0.95):
     alpha = (1 - confidence) / 2

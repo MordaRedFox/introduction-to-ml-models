@@ -61,7 +61,7 @@ x_train_split, x_test_split, y_train_split, y_test_split = train_test_split(
 # =============================================================================
 # 3. Анализ взаимосвязей между численными факторами и итоговой оценкой
 # =============================================================================
-training_data_with_target = x_train_split.copy()
+training_data_with_target = x_train_split.copy(deep=True)
 training_data_with_target['G3'] = y_train_split
 numeric_features = training_data_with_target.select_dtypes(
     include=['int64', 'float64'])
@@ -86,7 +86,7 @@ for variable in selected_numeric_features:
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x=training_data_with_target[variable],
                     y=training_data_with_target['G3'])
-    plt.title(f'Зависимость итоговой оценки от {variable}')
+    plt.title(f'Зависимость итоговой оценки от  фактора "{variable}"')
     plt.xlabel(variable)
     plt.ylabel('Итоговая оценка (G3)')
     plt.show()
@@ -95,7 +95,7 @@ for variable in selected_numeric_features:
     plt.figure(figsize=(10, 6))
     sns.boxplot(x=training_data_with_target[variable],
                 y=training_data_with_target['G3'])
-    plt.title(f'Зависимость итоговой оценки от {variable}')
+    plt.title(f'Зависимость итоговой оценки от  фактора "{variable}"')
     plt.xlabel(variable)
     plt.ylabel('Итоговая оценка (G3)')
     plt.show()
@@ -144,11 +144,11 @@ def analyze_categorical_influence(data, categorical_cols, target_col='G3'):
     influence_metrics = []
 
     for feature in categorical_cols:
-        # Агрегирует средние значения целевой переменной по категориям
+        # Агрегирование средних значений целевой переменной по категориям
         aggregated_data = data.groupby(
             feature, as_index=False).agg({target_col: 'mean'})
 
-        # Вычисляет статистические метрики
+        # Вычисление статистических метрик
         target_values = aggregated_data[target_col].values
         influence_metrics.append({
             'sign': feature,
@@ -156,11 +156,11 @@ def analyze_categorical_influence(data, categorical_cols, target_col='G3'):
         })
     return pd.DataFrame(influence_metrics)
 
-# Анализирует влияние категориальных факторов
+# Анализирование влияния категориальных факторов
 categorical_analysis_df = analyze_categorical_influence(
     training_data_with_target, categorical_features)
 
-# Сортирует по диапазону влияния (наибольшее влияние сверху)
+# Сортировка по диапазону влияния (наибольшее влияние сверху)
 categorical_analysis_df = categorical_analysis_df.sort_values(
     'range', ascending=False)
 
@@ -184,7 +184,7 @@ sleep(10)
 def encode_categorical_features(data, features_to_encode, target_col='G3'):
     """Выполняет target encoding для указанных категориальных признаков"""
     encoders = {}
-    encoded_data = data.copy()
+    encoded_data = data.copy(deep=True)
 
     for feature in features_to_encode:
         encoder = TargetEncoder()
@@ -196,12 +196,12 @@ def encode_categorical_features(data, features_to_encode, target_col='G3'):
 training_data_encoded, feature_encoders = encode_categorical_features(
     training_data_with_target, significant_categorical_features)
 
-# Формируем финальный набор признаков для моделирования
+# Формирование финального набора признаков для моделирования
 final_features = selected_numeric_features + [
     f'{feature}_encoded' for feature in significant_categorical_features
 ]
 
-x_train_processed = training_data_encoded[final_features].copy()
+x_train_processed = training_data_encoded[final_features].copy(deep=True)
 print('\n\nЗакодированные данные для обучения (первые 5 строк):')
 print(x_train_processed.head())
 sleep(10)
@@ -226,20 +226,20 @@ sleep(10)
 # =============================================================================
 # 6. Подготовка тестовой выборки
 # =============================================================================
-test_data_with_target = x_test_split.copy()
+test_data_with_target = x_test_split.copy(deep=True)
 test_data_with_target['G3'] = y_test_split
 
-# Применяем target encoding к категориальным признакам с использованием
+# Применение target encoding к категориальным признакам с использованием
 # энкодеров, обученных на тренировочных данных
-test_data_encoded = test_data_with_target.copy()
+test_data_encoded = test_data_with_target.copy(deep=True)
 for feature in significant_categorical_features:
-    # Используем энкодер, обученный на тренировочных данных
+    # Использование энкодера, обученного на тренировочных данных
     encoder = feature_encoders[feature]
     test_data_encoded[f'{feature}_encoded'] = encoder.transform(
         test_data_with_target[feature])
 
-# Формируем финальный набор признаков для тестовой выборки
-x_test_processed = test_data_encoded[final_features].copy()
+# Формирование финального набора признаков для тестовой выборки
+x_test_processed = test_data_encoded[final_features].copy(deep=True)
 
 print('\n\nЗакодированные данные для тестирования (первые 5 строк):')
 print(x_test_processed.head())

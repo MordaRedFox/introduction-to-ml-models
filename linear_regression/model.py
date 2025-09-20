@@ -36,7 +36,7 @@ mae = mean_absolute_error(y_test, y_test_pred)
 mse = mean_squared_error(y_test, y_test_pred)
 rmse = np.sqrt(mean_squared_error(y_test, y_test_pred))
 
-print('===== МЕТРИКИ КАЧЕСТВА МОДЕЛИ =====')
+print('Метрики качества модели:')
 print(f'R² на обучающей выборке: {r2_train}')
 print(f'R² на тестовой выборке: {r2_test}')
 print(f'Переобучение (разница R²): {retraining}')
@@ -84,38 +84,38 @@ mae_ci = calculate_confidence_interval(mae_scores, confidence_level)
 rmse_ci = calculate_confidence_interval(rmse_scores, confidence_level)
 
 # Вывод результатов
-print('\n\n===== ДОВЕРИТЕЛЬНЫЕ ИНТЕРВАЛЫ МЕТРИК (БУТСТРАП) =====')
+print('\n\nДоверительные интервалы метрик (бутстрап):')
 print('R²:')
 print(f'Среднее значение интервала: {r2_test}')
 print(f'Интервал: [{mae_ci[0]}, {mae_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {mae_ci[1]-mae_ci[0]})')
-sleep(5)
+print(f'Описание интервала: (95% ДИ, ширина: {mae_ci[1] - mae_ci[0]})')
+sleep(10)
 
 print('\nMAE:')
 print(f'Среднее значение интервала: {mae}')
 print(f'Интервал: [{mae_ci[0]}, {mae_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {mae_ci[1]-mae_ci[0]})')
-sleep(5)
+print(f'Описание интервала: (95% ДИ, ширина: {mae_ci[1] - mae_ci[0]})')
+sleep(10)
 
 print('\nRMSE:')
 print(f'Среднее значение интервала: {rmse}')
 print(f'Интервал: [{rmse_ci[0]}, {rmse_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {rmse_ci[1]-rmse_ci[0]})')
+print(f'Описание интервала: (95% ДИ, ширина: {rmse_ci[1] - rmse_ci[0]})')
 sleep(10)
 
 # Анализ практической полезности модели
-print('\n\n===== АНАЛИЗ ПРАКТИЧЕСКОЙ ПОЛЕЗНОСТИ МОДЕЛИ =====')
+print('\n\nАнализ практической полезности модели:')
 print(f'В худшем случае (нижняя граница ДИ):')
-print(f'  R² может быть всего {r2_ci[0]:.4f}')
-print(f'  MAE может достигать {mae_ci[1]:.4f}')
-print(f'  RMSE может достигать {rmse_ci[1]:.4f}')
+print(f'  R² может быть всего {r2_ci[0]}')
+print(f'  MAE может достигать {mae_ci[1]}')
+print(f'  RMSE может достигать {rmse_ci[1]}')
 sleep(10)
 
 
 # =============================================================================
 # 4. Интерпретация коэффициентов
 # =============================================================================
-print('\n\n===== ИНТЕРПРЕТАЦИЯ КОЭФФИЦИЕНТОВ =====')
+print('\n\nИнтерпретация коэффициентов:')
 feature_importance = pd.DataFrame({
     'feature': x_train.columns,
     'coefficient': model.coef_[0],
@@ -155,3 +155,5 @@ plt.title('Анализ остатков')
 
 plt.tight_layout()
 plt.show()
+
+print('\n\nОбучение и анализ завершены!')

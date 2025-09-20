@@ -289,4 +289,4 @@ plt.grid(axis='x', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
 
-print('\nОбучение и анализ завершены!')
+print('\n\nОбучение и анализ завершены!')
