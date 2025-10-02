@@ -11,17 +11,30 @@ from sklearn.model_selection import train_test_split
 # =============================================================================
 # 1. Загрузка и первичное исследование образовательных данных
 # =============================================================================
-print('Выполняется анализ графиков...')
-sleep(3)
+print('=' * 80)
+print('1. Загрузка и первичное исследование образовательных данных')
+print('=' * 80)
+sleep(2)
 
+# Чтение данных
 sns.set(rc={'figure.figsize': (11.7, 8.27)})
 student_dataset = pd.read_csv('data\student_mat.csv')
+
+print(f'\n\nРазмерность данных: {student_dataset.shape}')
+sleep(5)
+print('\nПервые 5 строк данных:')
+print(student_dataset.head())
+sleep(10)
+
+print('\n\nВыполняется анализ графиков...')
+
+# Визуализация распределения итоговых оценок учеников
 sns.histplot(student_dataset['G3'])
 plt.title('Распределение итоговых оценок')
 plt.xlabel('Итоговая оценка (G3)')
 plt.ylabel('Количество учеников')
 plt.show()
-sleep(3)
+sleep(2)
 
 # Наблюдаем много итоговых оценок, равных нулю. Посмотрим оценки за первое
 # полугодие (G1) у таких людей
@@ -47,20 +60,32 @@ sleep(2)
 # =============================================================================
 # 2. Формирование обучающей и тестовой выборок
 # =============================================================================
-# Разделение на предикторы и целевую переменную
+print('\n\n' + '=' * 80)
+print('2. Формирование обучающей и тестовой выборок')
+print('=' * 80)
+sleep(2)
+
 predictors = filtered_data.drop(columns=['G3'])
 target_variable = filtered_data['G3']
-sleep(5)
 
-# Так как данных крайне мало, возьмём в тестовую выборку 50 значений, а
-# валидационную выборку делать не будем
+# Так как данных слишком мало, в тестовой выборке будет всего 50 значений, а
+# валидационная выборка не будет создана
 x_train_split, x_test_split, y_train_split, y_test_split = train_test_split(
-    predictors, target_variable, test_size=50, random_state=42)
+    predictors, target_variable, test_size=50, random_state=52)
+
+print(f'\n\nРазмер обучающей выборки: {x_train_split.shape[0]}')
+print(f'Размер тестовой выборки: {x_test_split.shape[0]}')
+sleep(10)
 
 
 # =============================================================================
 # 3. Анализ взаимосвязей между численными факторами и итоговой оценкой
 # =============================================================================
+print('\n\n' + '=' * 80)
+print('3. Анализ взаимосвязей между численными факторами и итоговой оценкой')
+print('=' * 80)
+sleep(2)
+
 training_data_with_target = x_train_split.copy(deep=True)
 training_data_with_target['G3'] = y_train_split
 numeric_features = training_data_with_target.select_dtypes(
@@ -74,12 +99,14 @@ sleep(10)
 # Отбор статистически значимых корреляций
 significant_correlations = correlation_analysis[
     (correlation_analysis >= 0.1) | (correlation_analysis <= -0.1)]
+
 print('\n\nСтатистически значимые корреляции:')
 print(significant_correlations.sort_values(ascending=False))
 sleep(10)
 
-# Анализ графиков для переменных с высокой корреляцией
 print('\n\nВыполняется анализ графиков...')
+
+# Анализ графиков для переменных с высокой корреляцией
 selected_numeric_features = correlation_analysis.drop('G3').index.tolist()
 for variable in selected_numeric_features:
     # Первый график зависимости
@@ -115,7 +142,7 @@ plt.grid(True)
 plt.show()
 sleep(2)
 
-# Комплексный анализ времени на учебу и его влияния на результаты
+# Комплексный анализ затраченного на учебу времени и его влияния на результаты
 plt.figure(figsize=(10, 6))
 sns.violinplot(x=training_data_with_target['studytime'],
                y=training_data_with_target['G3'])
@@ -133,6 +160,12 @@ sleep(5)
 # =============================================================================
 # 4. Анализ взаимосвязей между категориальными факторами и итоговой оценкой
 # =============================================================================
+print('\n\n' + '=' * 80)
+print('4. Анализ взаимосвязей между категориальными факторами и итоговой '
+      'оценкой')
+print('=' * 80)
+sleep(2)
+
 categorical_features = [
     'school', 'gender', 'address', 'famsize', 'Pstatus', 'Mjob', 'Fjob',
     'reason', 'guardian', 'schoolsup', 'famsup', 'paid', 'activities',
@@ -180,6 +213,11 @@ sleep(10)
 # =============================================================================
 # 5. Подготовка обучающей выборки
 # =============================================================================
+print('\n\n' + '=' * 80)
+print('5. Подготовка обучающей выборки')
+print('=' * 80)
+sleep(2)
+
 # Кодирование значимых категориальных признаков
 def encode_categorical_features(data, features_to_encode, target_col='G3'):
     """Выполняет target encoding для указанных категориальных признаков"""
@@ -200,8 +238,8 @@ training_data_encoded, feature_encoders = encode_categorical_features(
 final_features = selected_numeric_features + [
     f'{feature}_encoded' for feature in significant_categorical_features
 ]
-
 x_train_processed = training_data_encoded[final_features].copy(deep=True)
+
 print('\n\nЗакодированные данные для обучения (первые 5 строк):')
 print(x_train_processed.head())
 sleep(10)
@@ -226,6 +264,11 @@ sleep(10)
 # =============================================================================
 # 6. Подготовка тестовой выборки
 # =============================================================================
+print('\n\n' + '=' * 80)
+print('6. Подготовка тестовой выборки')
+print('=' * 80)
+sleep(2)
+
 test_data_with_target = x_test_split.copy(deep=True)
 test_data_with_target['G3'] = y_test_split
 
@@ -264,6 +307,11 @@ sleep(5)
 # =============================================================================
 # 7. Сохранение обучающей и тестовой выборок в CSV файл
 # =============================================================================
+print('\n\n' + '=' * 80)
+print('7. Сохранение обучающей и тестовой выборок в CSV файл')
+print('=' * 80)
+sleep(2)
+
 x_train_scaled_df.to_csv(
     'linear_regression_data/x_train_data.csv', index=False)
 y_train_split.to_csv(
@@ -273,4 +321,4 @@ x_test_scaled_df.to_csv(
 y_test_split.to_csv(
     'linear_regression_data/y_test_data.csv', index=False)
 
-print('\n\nСохранение данных прошло успешно!')
+print('\n\nСохранение данных прошло успешно!\n\n')
