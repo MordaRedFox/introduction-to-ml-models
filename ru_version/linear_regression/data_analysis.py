@@ -18,7 +18,7 @@ sleep(2)
 
 # Чтение данных
 sns.set(rc={'figure.figsize': (11.7, 8.27)})
-student_dataset = pd.read_csv('data\student_mat.csv')
+student_dataset = pd.read_csv('data/student_mat.csv')
 
 print(f'\n\nРазмерность данных: {student_dataset.shape}')
 sleep(5)
