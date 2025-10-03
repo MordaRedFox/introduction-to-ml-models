@@ -17,10 +17,10 @@ print('=' * 80)
 sleep(2)
 
 # Чтение данных
-x_train = pd.read_csv('linear_regression_data/x_train_data.csv')
-y_train = pd.read_csv('linear_regression_data/y_train_data.csv')
-x_test = pd.read_csv('linear_regression_data/x_test_data.csv')
-y_test = pd.read_csv('linear_regression_data/y_test_data.csv')
+x_train = pd.read_csv('data_linear_regression/x_train_data.csv')
+y_train = pd.read_csv('data_linear_regression/y_train_data.csv')
+x_test = pd.read_csv('data_linear_regression/x_test_data.csv')
+y_test = pd.read_csv('data_linear_regression/y_test_data.csv')
 
 print(f'\n\nРазмер обучающей выборки: {x_train.shape}')
 print(f'Размер тестовой выборки: {x_test.shape}')

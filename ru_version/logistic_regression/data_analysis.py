@@ -437,9 +437,9 @@ print('11. Сохранение обучающей и тестовой выбо�
 print('=' * 80)
 sleep(2)
 
-x_train_final.to_csv('logistic_regression_data/x_train_data.csv', index=False)
-y_train.to_csv('logistic_regression_data/y_train_data.csv', index=False)
-x_test_final.to_csv('logistic_regression_data/x_test_data.csv', index=False)
-y_test.to_csv('logistic_regression_data/y_test_data.csv', index=False)
+x_train_final.to_csv('data_logistic_regression/x_train_data.csv', index=False)
+y_train.to_csv('data_logistic_regression/y_train_data.csv', index=False)
+x_test_final.to_csv('data_logistic_regression/x_test_data.csv', index=False)
+y_test.to_csv('data_logistic_regression/y_test_data.csv', index=False)
 
 print('\n\nСохранение данных прошло успешно!\n\n')

@@ -231,9 +231,9 @@ print('8. Сохранение обучающей и тестовой выбор
 print('=' * 80)
 sleep(2)
 
-x_train_selected.to_csv('decision_tree_data/x_train_data.csv', index=False)
-x_test_selected.to_csv('decision_tree_data/x_test_data.csv', index=False)
-y_train.to_csv('decision_tree_data/y_train_data.csv', index=False)
-y_test.to_csv('decision_tree_data/y_test_data.csv', index=False)
+x_train_selected.to_csv('data_decision_tree/x_train_data.csv', index=False)
+x_test_selected.to_csv('data_decision_tree/x_test_data.csv', index=False)
+y_train.to_csv('data_decision_tree/y_train_data.csv', index=False)
+y_test.to_csv('data_decision_tree/y_test_data.csv', index=False)
 
 print('\n\nСохранение данных прошло успешно!\n\n')

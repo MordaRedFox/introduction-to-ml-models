@@ -19,10 +19,10 @@ print('=' * 80)
 sleep(2)
 
 # Чтение данных
-x_train = pd.read_csv('decision_tree_data/x_train_data.csv')
-y_train = pd.read_csv('decision_tree_data/y_train_data.csv')
-x_test = pd.read_csv('decision_tree_data/x_test_data.csv')
-y_test = pd.read_csv('decision_tree_data/y_test_data.csv')
+x_train = pd.read_csv('data_decision_tree/x_train_data.csv')
+y_train = pd.read_csv('data_decision_tree/y_train_data.csv')
+x_test = pd.read_csv('data_decision_tree/x_test_data.csv')
+y_test = pd.read_csv('data_decision_tree/y_test_data.csv')
 
 # Преобразование из 2D массива в 1D для корректности
 y_train = y_train.values.ravel()

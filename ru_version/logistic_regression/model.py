@@ -18,10 +18,10 @@ print('=' * 80)
 sleep(2)
 
 # Чтение данных
-x_train = pd.read_csv('logistic_regression_data/x_train_data.csv')
-y_train = pd.read_csv('logistic_regression_data/y_train_data.csv')
-x_test = pd.read_csv('logistic_regression_data/x_test_data.csv')
-y_test = pd.read_csv('logistic_regression_data/y_test_data.csv')
+x_train = pd.read_csv('data_logistic_regression/x_train_data.csv')
+y_train = pd.read_csv('data_logistic_regression/y_train_data.csv')
+x_test = pd.read_csv('data_logistic_regression/x_test_data.csv')
+y_test = pd.read_csv('data_logistic_regression/y_test_data.csv')
 
 # Разделение обучающей выборки на обучающую и валидационную (75%:25%)
 x_train_split, x_val, y_train_split, y_val = train_test_split(
