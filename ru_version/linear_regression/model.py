@@ -83,10 +83,10 @@ for i in range(n_bootstraps):
         print(f'Завершено итераций: {i + 1}/{n_bootstraps}')
 
     # Создание бутстрап-выборки (с повторениями)
-    X_boot, y_boot = resample(x_test, y_test, random_state=i)
+    x_boot, y_boot = resample(x_test, y_test, random_state=i)
 
     # Предсказание на бутстрап-выборке
-    y_pred_boot = model.predict(X_boot)
+    y_pred_boot = model.predict(x_boot)
 
     # Вычисление метрик
     r2_scores.append(r2_score(y_boot, y_pred_boot))

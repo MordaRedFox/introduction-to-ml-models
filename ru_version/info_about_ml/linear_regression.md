@@ -208,17 +208,17 @@ from sklearn.model_selection import train_test_split
 
 # Предобработка
 scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+x_scaled = scaler.fit_transform(x)
 
 # Разделение данных
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)
+x_train, x_test, y_train, y_test = train_test_split(x_scaled, y, test_size=0.2)
 
 # Обучение модели
 model = LinearRegression()
-model.fit(X_train, y_train)
+model.fit(x_train, y_train)
 
 # Предсказание
-y_pred = model.predict(X_test)
+y_pred = model.predict(x_test)
 ```
 
 ### Анализ данных перед моделированием
@@ -289,16 +289,24 @@ feature_importance = pd.DataFrame({
 Пример из кода:
 
 ```python
-from sklearn.utils import resample
-
 n_bootstraps = 1000
 confidence_level = 0.95
-r2_scores = []
 
+r2_scores = []
+mae_scores = []
+rmse_scores = []
+
+print(f'\n\nВыполняется бутстрап ({n_bootstraps} итераций)...')
 for i in range(n_bootstraps):
-    X_boot, y_boot = resample(X_test, y_test, random_state=i)
-    y_pred_boot = model.predict(X_boot)
+    if (i + 1) % 100 == 0:
+        print(f'Завершено итераций: {i + 1}/{n_bootstraps}')
+
+    x_boot, y_boot = resample(x_test, y_test, random_state=i)
+    y_pred_boot = model.predict(x_boot)
+
     r2_scores.append(r2_score(y_boot, y_pred_boot))
+    mae_scores.append(mean_absolute_error(y_boot, y_pred_boot))
+    rmse_scores.append(np.sqrt(mean_squared_error(y_boot, y_pred_boot)))
 ```
 
 ### Расчет доверительных интервалов
@@ -306,6 +314,7 @@ for i in range(n_bootstraps):
 
 ```python
 def calculate_confidence_interval(scores, confidence=0.95):
+    """Вычисляет доверительный интервал для массива scores"""
     alpha = (1 - confidence) / 2
     lower = np.percentile(scores, alpha * 100)
     upper = np.percentile(scores, (1 - alpha) * 100)

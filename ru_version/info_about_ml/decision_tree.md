@@ -324,23 +324,27 @@ boot_f1_scores = []
 
 n_bootstraps = 1000
 
+print(f'\n\nВыполняется бутстрап ({n_bootstraps} итераций)...')
 for i in range(n_bootstraps):
     if (i + 1) % 100 == 0:
         print(f'Завершено итераций: {i + 1}/{n_bootstraps}')
 
+    # Создание бутстрап-выборки
     x_y_test_boot = x_y_test.sample(len(x_y_test), replace=True)
     x_test_boot = x_y_test_boot.drop(columns='label')
     y_test_boot = x_y_test_boot['label']
 
+    # Предсказания модели
     y_pred = best_model.predict(x_test_boot)
 
+    # Вычисление метрик качества
     boot_accuracies.append(accuracy_score(y_test_boot, y_pred))
-    boot_precisions.append(precision_score(y_test_boot, y_pred, average='weighted',
-                                           zero_division=0))
-    boot_recalls.append(recall_score(y_test_boot, y_pred, average='weighted',
-                                     zero_division=0))
-    boot_f1_scores.append(f1_score(y_test_boot, y_pred, average='weighted',
-                                   zero_division=0))
+    boot_precisions.append(precision_score(y_test_boot, y_pred,
+                                         average='weighted', zero_division=0))
+    boot_recalls.append(recall_score(y_test_boot, y_pred,
+                                   average='weighted', zero_division=0))
+    boot_f1_scores.append(f1_score(y_test_boot, y_pred,
+                                 average='weighted', zero_division=0))
 ```
 
 ### Расчет доверительных интервалов

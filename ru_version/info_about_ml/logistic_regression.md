@@ -253,16 +253,24 @@ boot_f1_scores = []
 
 n_bootstraps = 1000
 
+print(f'\n\nВыполняется бутстрап ({n_bootstraps} итераций)...')
 for i in range(n_bootstraps):
+    if (i + 1) % 100 == 0:
+        print(f'Завершено итераций: {i + 1}/{n_bootstraps}')
+
+    # Создание бутстрап-выборки
     x_y_test_boot = x_y_test.sample(len(x_y_test), replace=True)
     x_test_boot = x_y_test_boot.drop(columns='satisfaction')
     y_test_boot = x_y_test_boot['satisfaction']
-    
+
+    # Предсказания модели с оптимальным порогом
     predicted_probas = model.predict_proba(x_test_boot)
     y_pred = predicted_probas[:, 1] >= best_threshold
-    
+
+    # Вычисление метрик качества
     boot_accuracies.append(accuracy_score(y_test_boot, y_pred))
-    boot_precisions.append(precision_score(y_test_boot, y_pred, zero_division=0))
+    boot_precisions.append(precision_score(y_test_boot, y_pred,
+                                           zero_division=0))
     boot_recalls.append(recall_score(y_test_boot, y_pred, zero_division=0))
     boot_f1_scores.append(f1_score(y_test_boot, y_pred, zero_division=0))
 ```
