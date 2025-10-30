@@ -10,90 +10,90 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score,
 
 
 # =============================================================================
-# 1. Загрузка и подготовка данных
+# 1. Data loading and preparation
 # =============================================================================
 print('=' * 80)
-print('1. Загрузка и подготовка данных')
+print('1. Data loading and preparation')
 print('=' * 80)
 sleep(2)
 
-# Чтение данных
+# Reading data
 x_train = pd.read_csv('data_logistic_regression/x_train_data.csv')
 y_train = pd.read_csv('data_logistic_regression/y_train_data.csv')
 x_test = pd.read_csv('data_logistic_regression/x_test_data.csv')
 y_test = pd.read_csv('data_logistic_regression/y_test_data.csv')
 
-# Разделение обучающей выборки на обучающую и валидационную (75%:25%)
+# Splitting training data into training and validation sets (75%:25%)
 x_train_split, x_val, y_train_split, y_val = train_test_split(
     x_train, y_train, test_size=0.25, random_state=52, stratify=y_train)
 
-# Преобразование из 2D массива в 1D для корректности
+# Converting from 2D array to 1D for correctness
 y_train_split = y_train_split.values.ravel()
 y_val = y_val.values.ravel()
 
-print(f'\n\nРазмер обучающей выборки: {x_train_split.shape}')
-print(f'Размер валидационной выборки: {x_val.shape}')
+print(f'\n\nTraining set size: {x_train_split.shape}')
+print(f'Validation set size: {x_val.shape}')
 sleep(5)
 
 
 # =============================================================================
-# 2. Создание и обучение модели
+# 2. Model creation and training
 # =============================================================================
 print('\n\n' + '=' * 80)
-print('2. Создание и обучение модели')
+print('2. Model creation and training')
 print('=' * 80)
 sleep(2)
 
-# Создание и обучение модели
+# Creating and training the model
 model = LogisticRegression(penalty=None)
 model.fit(x_train_split, y_train_split)
 
-# Предсказания
+# Predictions
 train_predictions = model.predict(x_train_split)
 train_probabilities = model.predict_proba(x_train_split)
 
-# Промежуточные проверки
-print('\n\nПредсказания модели:')
+# Intermediate checks
+print('\n\nModel predictions:')
 
-print('\nПервые 10 предсказанных классов:')
+print('\nFirst 10 predicted classes:')
 print(train_predictions[:10])
 sleep(5)
 
-print('\nПервые 10 предсказанных вероятностей:')
+print('\nFirst 10 predicted probabilities:')
 print(train_probabilities[:10])
 sleep(10)
 
 
 # =============================================================================
-# 3. Оценка качества модели на обучающей и валидационной выборках
+# 3. Model evaluation on training and validation sets
 # =============================================================================
 print('\n\n' + '=' * 80)
-print('3. Оценка качества модели на обучающей и валидационной выборках')
+print('3. Model evaluation on training and validation sets')
 print('=' * 80)
 sleep(2)
 
-# Метрики качества на обучающей выборке
+# Quality metrics on training set
 train_accuracy = accuracy_score(y_train_split, train_predictions)
 train_precision = precision_score(y_train_split, train_predictions,
                                   zero_division=0)
 train_recall = recall_score(y_train_split, train_predictions, zero_division=0)
 train_f1 = f1_score(y_train_split, train_predictions, zero_division=0)
 
-print('\n\nМетрики качества на обучающей выборке:')
+print('\n\nQuality metrics on training set:')
 print(f'Accuracy: {train_accuracy}')
 print(f'Precision: {train_precision}')
 print(f'Recall: {train_recall}')
 print(f'F1-score: {train_f1}')
 sleep(10)
 
-# Метрики качества на валидационной выборке
+# Quality metrics on validation set
 val_predictions = model.predict(x_val)
 val_accuracy = accuracy_score(y_val, val_predictions)
 val_precision = precision_score(y_val, val_predictions, zero_division=0)
 val_recall = recall_score(y_val, val_predictions, zero_division=0)
 val_f1 = f1_score(y_val, val_predictions, zero_division=0)
 
-print('\nМетрики качества на валидационной выборке:')
+print('\nQuality metrics on validation set:')
 print(f'Accuracy: {val_accuracy}')
 print(f'Precision: {val_precision}')
 print(f'Recall: {val_recall}')
@@ -102,10 +102,10 @@ sleep(10)
 
 
 # =============================================================================
-# 4. Подбор оптимального порогового значения
+# 4. Finding the optimal threshold value
 # =============================================================================
 print('\n\n' + '=' * 80)
-print('4. Подбор оптимального порогового значения')
+print('4. Finding the optimal threshold value')
 print('=' * 80)
 sleep(2)
 
@@ -123,12 +123,12 @@ for t in range(0, 1001):
         best_f1 = f1
         best_threshold = threshold
 
-print('\n\nПодбор оптимального порогового значения для классификации...')
-print(f'Лучшее значение F1-score на валидационной выборке: {best_f1}')
-print(f'Оптимальный порог: {best_threshold}')
+print('\n\nFinding optimal threshold for classification...')
+print(f'Best F1-score on validation set: {best_f1}')
+print(f'Optimal threshold: {best_threshold}')
 sleep(5)
 
-# Визуализация зависимости F1-score от порога
+# Visualization of F1-score dependence on threshold
 thresholds = np.linspace(0, 1, 100)
 f1_scores = []
 
@@ -136,16 +136,16 @@ for threshold in thresholds:
     y_val_pred = val_probabilities > threshold
     f1_scores.append(f1_score(y_val, y_val_pred, zero_division=0))
 
-print('\n\nВыполняется анализ графика...')
+print('\n\nAnalyzing the plot...')
 
 sns.set(rc={'figure.figsize': (11.7, 8.27)})
 plt.figure(figsize=(12, 8))
 plt.plot(thresholds, f1_scores)
 plt.axvline(x=best_threshold, color='r', linestyle='--',
-            label=f'Оптимальный порог: {best_threshold}')
-plt.xlabel('Пороговое значение')
+            label=f'Optimal threshold: {best_threshold}')
+plt.xlabel('Threshold value')
 plt.ylabel('F1-score')
-plt.title('Зависимость F1-score от порогового значения')
+plt.title('F1-score dependence on threshold value')
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -154,60 +154,60 @@ sleep(2)
 
 
 # =============================================================================
-# 5. Оценка качества модели на тестовой выборке
+# 5. Model evaluation on test set
 # =============================================================================
 print('\n\n' + '=' * 80)
-print('5. Оценка качества модели на тестовой выборке')
+print('5. Model evaluation on test set')
 print('=' * 80)
 sleep(2)
 
-# Предсказания с оптимальным порогом
+# Predictions with optimal threshold
 test_probabilities = model.predict_proba(x_test)[:, 1]
 test_predictions_optimal = test_probabilities > best_threshold
 
-# Метрики качества на тестовой выборке
+# Quality metrics on test set
 test_accuracy = accuracy_score(y_test, test_predictions_optimal)
 test_precision = precision_score(y_test, test_predictions_optimal,
                                  zero_division=0)
 test_recall = recall_score(y_test, test_predictions_optimal, zero_division=0)
 test_f1 = f1_score(y_test, test_predictions_optimal, zero_division=0)
 
-print('\n\nМетрики качества на тестовой выборке (с оптимальным порогом):')
+print('\n\nQuality metrics on test set (with optimal threshold):')
 print(f'Accuracy: {test_accuracy}')
 print(f'Precision: {test_precision}')
 print(f'Recall: {test_recall}')
 print(f'F1-score: {test_f1}')
 sleep(10)
 
-print('\n\nВыполняется анализ графика...')
+print('\n\nAnalyzing the plot...')
 
-# Матрица ошибок
+# Confusion matrix
 cm = confusion_matrix(y_test, test_predictions_optimal)
 plt.figure(figsize=(12, 8))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
-            xticklabels=['Предсказано 0', 'Предсказано 1'],
-            yticklabels=['Фактически 0', 'Фактически 1'])
-plt.title('Матрица ошибок на тестовой выборке')
-plt.xlabel('Предсказанный класс')
-plt.ylabel('Фактический класс')
+            xticklabels=['Predicted 0', 'Predicted 1'],
+            yticklabels=['Actual 0', 'Actual 1'])
+plt.title('Confusion matrix on test set')
+plt.xlabel('Predicted class')
+plt.ylabel('Actual class')
 plt.show()
 sleep(2)
 
-# Полный отчет о классификации
-print('\n\nОтчёт о классификации:')
+# Full classification report
+print('\n\nClassification report:')
 print(classification_report(y_test, test_predictions_optimal, zero_division=0))
 sleep(10)
 
 
 # =============================================================================
-# 6. Бутстрап для доверительных интервалов метрик
+# 6. Bootstrap for metric confidence intervals
 # =============================================================================
 print('\n\n' + '=' * 80)
-print('6. Бутстрап для доверительных интервалов метрик')
+print('6. Bootstrap for metric confidence intervals')
 print('=' * 80)
 sleep(2)
 
-# Объединение тестовых данных
+# Combining test data
 x_y_test = x_test.copy(deep=True)
 x_y_test['satisfaction'] = y_test.values
 
@@ -218,21 +218,21 @@ boot_f1_scores = []
 
 n_bootstraps = 1000
 
-print(f'\n\nВыполняется бутстрап ({n_bootstraps} итераций)...')
+print(f'\n\nRunning bootstrap ({n_bootstraps} iterations)...')
 for i in range(n_bootstraps):
     if (i + 1) % 100 == 0:
-        print(f'Завершено итераций: {i + 1}/{n_bootstraps}')
+        print(f'Completed iterations: {i + 1}/{n_bootstraps}')
 
-    # Создание бутстрап-выборки
+    # Creating bootstrap sample
     x_y_test_boot = x_y_test.sample(len(x_y_test), replace=True)
     x_test_boot = x_y_test_boot.drop(columns='satisfaction')
     y_test_boot = x_y_test_boot['satisfaction']
 
-    # Предсказания модели с оптимальным порогом
+    # Model predictions with optimal threshold
     predicted_probas = model.predict_proba(x_test_boot)
     y_pred = predicted_probas[:, 1] >= best_threshold
 
-    # Вычисление метрик качества
+    # Calculating quality metrics
     boot_accuracies.append(accuracy_score(y_test_boot, y_pred))
     boot_precisions.append(precision_score(y_test_boot, y_pred,
                                            zero_division=0))
@@ -240,7 +240,7 @@ for i in range(n_bootstraps):
     boot_f1_scores.append(f1_score(y_test_boot, y_pred, zero_division=0))
 
 def calculate_confidence_interval(metric_values):
-    """Вычисляет доверительные интервалы (95%)"""
+    """Calculates confidence intervals (95%)"""
     sorted_metrics = np.sort(metric_values)
     lower_bound = sorted_metrics[int(0.025 * len(sorted_metrics))]
     upper_bound = sorted_metrics[int(0.975 * len(sorted_metrics))]
@@ -251,38 +251,37 @@ precision_ci = calculate_confidence_interval(boot_precisions)
 recall_ci = calculate_confidence_interval(boot_recalls)
 f1_ci = calculate_confidence_interval(boot_f1_scores)
 
-# Вывод доверительных интервалов
-print('\n\nДоверительные интервалы метрик (бутстрап):')
+# Displaying confidence intervals
+print('\n\nMetric confidence intervals (bootstrap):')
 print('Accuracy:')
-print(f'Среднее значение интервала: {test_accuracy}')
-print(f'Интервал: [{accuracy_ci[0]}, {accuracy_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {
+print(f'Interval mean value: {test_accuracy}')
+print(f'Interval: [{accuracy_ci[0]}, {accuracy_ci[1]}]')
+print(f'Interval description: (95% CI, width: {
     accuracy_ci[1] - accuracy_ci[0]})')
 sleep(10)
 
 print('\nPrecision:')
-print(f'Среднее значение интервала: {test_precision}')
-print(f'Интервал: [{precision_ci[0]}, {precision_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {
+print(f'Interval mean value: {test_precision}')
+print(f'Interval: [{precision_ci[0]}, {precision_ci[1]}]')
+print(f'Interval description: (95% CI, width: {
     precision_ci[1] - precision_ci[0]})')
 sleep(10)
 
 print('\nRecall:')
-print(f'Среднее значение интервала: {test_recall}')
-print(f'Интервал: [{recall_ci[0]}, {recall_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {
-    recall_ci[1] - recall_ci[0]})')
+print(f'Interval mean value: {test_recall}')
+print(f'Interval: [{recall_ci[0]}, {recall_ci[1]}]')
+print(f'Interval description: (95% CI, width: {recall_ci[1] - recall_ci[0]})')
 sleep(10)
 
 print('\nF1:')
-print(f'Среднее значение интервала: {test_f1}')
-print(f'Интервал: [{f1_ci[0]}, {f1_ci[1]}]')
-print(f'Описание интервала: (95% ДИ, ширина: {f1_ci[1] - f1_ci[0]})')
+print(f'Interval mean value: {test_f1}')
+print(f'Interval: [{f1_ci[0]}, {f1_ci[1]}]')
+print(f'Interval description: (95% CI, width: {f1_ci[1] - f1_ci[0]})')
 sleep(10)
 
-print('\n\nВыполняется анализ графика...')
+print('\n\nAnalyzing the plot...')
 
-# Визуализация распределения метрик
+# Visualization of metric distributions
 fig, axes = plt.subplots(2, 2, figsize=(12, 8))
 metrics = [boot_accuracies, boot_precisions, boot_recalls, boot_f1_scores]
 metric_names = ['Accuracy', 'Precision', 'Recall', 'F1-score']
@@ -291,9 +290,9 @@ colors = ['blue', 'green', 'red', 'purple']
 for i, (ax, metric, name, color) in enumerate(zip(
         axes.flat, metrics, metric_names, colors)):
     sns.histplot(metric, ax=ax, color=color, kde=True)
-    ax.set_title(f'Распределение метрики "{name}"')
+    ax.set_title(f'Distribution of "{name}" metric')
     ax.set_xlabel(name)
-    ax.set_ylabel('Частота')
+    ax.set_ylabel('Frequency')
 
 plt.tight_layout()
 plt.show()
@@ -302,44 +301,44 @@ sleep(2)
 
 
 # =============================================================================
-# 7. Интерпретация коэффициентов модели
+# 7. Model coefficients interpretation
 # =============================================================================
 print('\n\n' + '=' * 80)
-print('7. Интерпретация коэффициентов модели')
+print('7. Model coefficients interpretation')
 print('=' * 80)
 sleep(2)
 
-# Получение коэффициентов и их значимости
+# Getting coefficients and their significance
 coefficients = pd.DataFrame({
-    'Признак': x_train.columns,
-    'Коэффициент': model.coef_[0],
-    'Exp(Коэффициент)': np.exp(model.coef_[0]),
-    'Влияние на шансы': [
-        'Увеличивает' if coef > 0 else 'Уменьшает' for coef in model.coef_[0]]
+    'Feature': x_train.columns,
+    'Coefficient': model.coef_[0],
+    'Exp(Coefficient)': np.exp(model.coef_[0]),
+    'Impact on Odds': [
+        'Increases' if coef > 0 else 'Decreases' for coef in model.coef_[0]]
 })
 
-# Сортировка по абсолютному значению коэффициента
+# Sorting by absolute coefficient value
 coefficients_sorted = coefficients.reindex(
-    coefficients['Коэффициент'].abs().sort_values(ascending=False).index)
+    coefficients['Coefficient'].abs().sort_values(ascending=False).index)
 
-print('\n\nКоэффициенты модели (отсортированы по влиянию):')
+print('\n\nModel coefficients (sorted by impact):')
 print(coefficients_sorted.to_string(index=False))
 sleep(10)
 
-print('\n\nВыполняется анализ графика...')
+print('\n\nAnalyzing the plot...')
 
-# Визуализация важности признаков
+# Visualization of feature importance
 plt.figure(figsize=(12, 8))
 colors = ['red' if coef < 0 else 'blue'
-          for coef in coefficients_sorted['Коэффициент']]
-plt.barh(coefficients_sorted['Признак'],
-         coefficients_sorted['Коэффициент'], color=colors)
-plt.xlabel('Значение коэффициента')
-plt.title('Важность признаков в модели логистической регрессии')
+          for coef in coefficients_sorted['Coefficient']]
+plt.barh(coefficients_sorted['Feature'],
+         coefficients_sorted['Coefficient'], color=colors)
+plt.xlabel('Coefficient value')
+plt.title('Feature importance in logistic regression model')
 plt.grid(axis='x', linestyle='--', alpha=0.7)
 plt.tight_layout()
 plt.show()
 
 sleep(2)
 
-print('\n\nОбучение и анализ завершены!\n\n')
+print('\n\nTraining and analysis completed!\n\n')

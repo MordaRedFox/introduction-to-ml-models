@@ -1,0 +1,27 @@
+Data description in satisfaction_survey.csv
+
+Factor Descriptions:
+• Gender — passenger's gender (binary: Female, Male).
+• Customer Type — passenger type (categorical: Loyal customer, disloyal Customer).
+• Age — passenger's age (numerical).
+• Type of Travel — purpose of the flight (binary: Personal Travel, Business Travel).
+• Class — flight class (categorical: Business, Eco, Eco Plus).
+• Flight distance — flight distance in miles (numerical).
+• Inflight wifi service — satisfaction level with the inflight Wi-Fi service (numerical: 1–5 or 0 if not rated).
+• Departure/Arrival time convenient — satisfaction level with the departure/arrival time (numerical: 1–5 or 0 if not rated).
+• Ease of Online booking — satisfaction level with the online booking process (numerical: 1–5 or 0 if not rated).
+• Gate location — satisfaction level with the gate location (numerical: 1–5 or 0 if not rated).
+• Food and drink — satisfaction level with the food and drink service (numerical: 1–5 or 0 if not rated).
+• Online boarding — satisfaction level with the online boarding process (numerical: 1–5 or 0 if not rated).
+• Seat comfort — satisfaction level with the seat comfort (numerical: 1–5 or 0 if not rated).
+• Inflight entertainment — satisfaction level with the inflight entertainment (numerical: 1–5 or 0 if not rated).
+• On-board service — satisfaction level with the on-board service (numerical: 1–5 or 0 if not rated).
+• Leg room service — satisfaction level with the leg room service (numerical: 1–5 or 0 if not rated).
+• Baggage handling — satisfaction level with the baggage handling (numerical: 1–5 or 0 if not rated).
+• Checkin service — satisfaction level with the check-in service (numerical: 1–5 or 0 if not rated).
+• Cleanliness — satisfaction level with the cleanliness of the aircraft (numerical: 1–5 or 0 if not rated).
+• Departure Delay in Minutes — total departure delay in minutes (numerical).
+• Arrival Delay in Minutes — total arrival delay in minutes (numerical).
+
+Target variable:
+• satisfaction — overall flight satisfaction (binary: False — passenger was dissatisfied, True — passenger was satisfied).
