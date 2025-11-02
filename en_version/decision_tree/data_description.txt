@@ -1,0 +1,22 @@
+Description of the data in images.csv
+
+The data to be used consists of images from the MNIST database. MNIST is
+comprised of grayscale images of handwritten digits. The database contains
+images of digits from 0 to 9. Each image has a resolution of 28x28 pixels.
+The dataset presents 42,000 images. This is a subset of all data
+available in MNIST.
+
+An image of size 28x28 is represented as a sequence of 784 numbers—one number
+for each pixel in the image. Each number falls within the range of 0 to 255.
+The higher the number, the greater the pixel intensity. A value of 0
+corresponds to a completely black pixel, while the maximum value corresponds
+to a completely white pixel.
+
+Each image is represented as a row in the images.csv table. The table contains
+columns named pixel0, pixel1, and so on up to pixel783, each of which
+corresponds to the value of a specific image pixel. The table also includes a
+column named label, which contains information about which digit is represented
+in the image.
+
+The objective of the project is to use the values from the columns whose names
+start with "pixel" to learn how to predict the value in the "label" column.
