@@ -12,9 +12,6 @@
 
 ---
 
-## ⚠️📢 Attention!
-The English version is still in development
-
 ## 🌟 Project Overview
 
 This project was developed as part of learning the fundamentals of machine learning. Its goal is not only practical implementation but also comprehensive analysis of key algorithms. As a training ground, the project presents four fundamental machine learning models:
