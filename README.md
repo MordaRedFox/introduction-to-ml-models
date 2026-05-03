@@ -1,66 +1,66 @@
 <div align="center">
 
-# 🧠 Introduction to Machine Learning
+# 🧠 Введение в машинное обучение
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3%2B-orange.svg)](https://scikit-learn.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-## Сменить язык: [Русский](README.ru.md)
+## Change language: [English](README.en.md)
 
 </div>
 
 ---
 
-## 🌟 Project Overview
+## 🌟 Обзор проекта
 
-This project was developed as part of learning the fundamentals of machine learning. Its goal is not only practical implementation but also comprehensive analysis of key algorithms. As a training ground, the project presents four fundamental machine learning models:
+Данный проект был разработан в рамках изучения основ машинного обучения. Его цель — не только практическая реализация, но и всесторонний анализ ключевых алгоритмов. В качестве учебного полигона в проекте представлены четыре фундаментальные модели машинного обучения:
 
 <div align="center">
 
 <table>
     <tr>
         <td align="center" width="25%">
-            <h3 align="center">Linear Regression</h3>
+            <h3 align="center">Линейная регрессия</h3>
         </td>
         <td align="center" width="25%">
-            <h3 align="center">Logistic Regression</h3>
+            <h3 align="center">Логистическая регрессия</h3>
         </td>
         <td align="center" width="25%">
-            <h3 align="center">Decision Tree</h3>
+            <h3 align="center">Дерево принятия решений</h3>
         </td>
         <td align="center" width="25%">
-            <h3 align="center">Random Forest</h3>
+            <h3 align="center">Случайный лес</h3>
         </td>
     </tr>
     <tr>
         <td align="left" valign="top" width="25%">
             <ul>
-                <li>🔮 Predicting students' final grades</li>
-                <li>🔍 Analysis of influencing factors</li>
-                <li>📈 Precise numerical prediction</li>
+                <li>🔮 Предсказание итоговых оценок учеников</li>
+                <li>🔍 Анализ влияющих факторов</li>
+                <li>📈 Точное численное предсказание</li>
             </ul>
         </td>
         <td align="left" valign="top" width="25%">
             <ul>
-                <li>✈️ Analysis of airline satisfaction</li>
-                <li>📜 Interpretation of model coefficients</li>
-                <li>🚩 Identification of key influencing factors</li>
+                <li>✈️ Анализ удовлетворённости авиаперелётами</li>
+                <li>📜 Интерпретация коэффициентов модели</li>
+                <li>🚩 Выявление ключевых факторов влияния</li>
             </ul>
         </td>
         <td align="left" valign="top" width="25%">
             <ul>
-                <li>🔢 Handwritten digit recognition</li>
-                <li>🔥 Simple and interpretable model</li>
-                <li>⚡ Fast training and prediction</li>
+                <li>🔢 Распознавание рукописных цифр</li>
+                <li>🔥 Простая и интерпретируемая модель</li>
+                <li>⚡ Быстрое обучение и предсказание</li>
             </ul>
         </td>
         <td align="left" valign="top" width="25%">
             <ul>
-                <li>🔢 Handwritten digit recognition</li>
-                <li>🥇 Best prediction accuracy</li>
-                <li>🔄 Ensemble of 1000 trees</li>
-                <li>🔰 Resistance to overfitting</li>
+                <li>🔢 Распознавание рукописных цифр</li>
+                <li>🥇 Наилучшая точность предсказания</li>
+                <li>🔄 Ансамбль из 1000 деревьев</li>
+                <li>🔰 Устойчивость к переобучению</li>
             </ul>
         </td>
     </tr>
@@ -70,56 +70,56 @@ This project was developed as part of learning the fundamentals of machine learn
 
 ---
 
-## 🎯 Goals and Objectives
+## 🎯 Цели и задачи
 
-### 📚 Educational Goals
-- Understanding the basics of machine learning and its applications
-- Practical implementation of key ML algorithms
-- Data analysis and feature preparation for different types of tasks
-- Model evaluation using modern metrics
-- Interpretation of results for business decisions
+### 📚 Образовательные цели
+- Понимание основ машинного обучения и его применения
+- Практическая реализация ключевых алгоритмов ML
+- Анализ данных и подготовка признаков для разных типов задач
+- Оценка качества моделей с использованием современных метрик
+- Интерпретация результатов для принятия бизнес-решений
 
-### 🎓 Academic Value
-The project demonstrates various approaches to solving ML problems:
-- **Regression** - predicting numerical values
-- **Classification** - binary and multiclass
-- **Feature importance analysis** - model interpretation
-- **Ensemble methods** - improving prediction accuracy
+### 🎓 Академическая ценность
+Проект демонстрирует различные подходы к решению задач ML:
+- **Регрессия** - предсказание численных значений
+- **Классификация** - бинарная и многоклассовая
+- **Анализ важности признаков** - интерпретация моделей
+- **Ансамблевые методы** - улучшение точности предсказаний
 
 ---
 
-## 📊 Used Data
+## 📊 Используемые данные
 
 <div align="center">
 
 <table>
     <tr align="center">
-        <th>Dataset</th>
-        <th>Task Type</th>
-        <th>Size</th>
-        <th>Source</th>
-        <th>Description</th>
+        <th>Набор данных</th>
+        <th>Тип задачи</th>
+        <th>Размер</th>
+        <th>Источник</th>
+        <th>Описание</th>
     </tr>
     <tr align="center">
         <td><strong>Student Performance</strong></td>
-        <td>Regression</td>
-        <td>395 records</td>
+        <td>Регрессия</td>
+        <td>395 записей</td>
         <td>P. Cortez and A. Silva</td>
-        <td>Data on student performance in Portuguese schools</td>
+        <td>Данные об успеваемости учеников португальских школ</td>
     </tr>
     <tr align="center">
         <td><strong>Airline Satisfaction</strong></td>
-        <td>Classification</td>
-        <td>130000 records</td>
-        <td>Anonymous survey</td>
-        <td>Data on airline flight satisfaction</td>
+        <td>Классификация</td>
+        <td>130000 записей</td>
+        <td>Анонимный опрос</td>
+        <td>Данные об удовлетворённости авиаперелётами</td>
     </tr>
     <tr align="center">
         <td><strong>MNIST</strong></td>
-        <td>Classification</td>
-        <td>70000 images</td>
-        <td>Standard dataset</td>
-        <td>Handwritten digits 28x28 pixels</td>
+        <td>Классификация</td>
+        <td>70000 изображений</td>
+        <td>Стандартный датасет</td>
+        <td>Рукописные цифры 28x28 пикселей</td>
     </tr>
 </table>
 
@@ -127,57 +127,57 @@ The project demonstrates various approaches to solving ML problems:
 
 ---
 
-## 🛠 Technology Stack
+## 🛠 Технологический стек
 
 <div align="center">
 
 <table>
     <tr>
-        <th>Component</th>
-        <th>Version</th>
-        <th>Purpose</th>
-        <th>Badge</th>
+        <th>Компонент</th>
+        <th>Версия</th>
+        <th>Назначение</th>
+        <th>Бейдж</th>
     </tr>
     <tr align="center">
         <td>Python</td>
         <td>3.10+</td>
-        <td>Main programming language</td>
+        <td>Основной язык программирования</td>
         <td><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white" alt="Python"></td>
     </tr>
     <tr align="center">
         <td>Scikit-learn</td>
         <td>1.3+</td>
-        <td>Machine learning library</td>
+        <td>Библиотека машинного обучения</td>
         <td><img src="https://img.shields.io/badge/Scikit--learn-1.3%2B-F7931E?logo=scikit-learn&logoColor=white" alt="Scikit-learn"></td>
     </tr>
     <tr align="center">
         <td>Pandas</td>
         <td>2.0+</td>
-        <td>Data analysis and processing</td>
+        <td>Анализ и обработка данных</td>
         <td><img src="https://img.shields.io/badge/Pandas-2.0%2B-150458?logo=pandas&logoColor=white" alt="Pandas"></td>
     </tr>
     <tr align="center">
         <td>NumPy</td>
         <td>1.24+</td>
-        <td>Scientific computing</td>
+        <td>Научные вычисления</td>
         <td><img src="https://img.shields.io/badge/NumPy-1.24%2B-013243?logo=numpy&logoColor=white" alt="NumPy"></td>
     </tr>
     <tr align="center">
         <td>Matplotlib</td>
         <td>3.7+</td>
-        <td>Data visualization</td>
+        <td>Визуализация данных</td>
         <td><img src="https://img.shields.io/badge/Matplotlib-3.7%2B-11557c?logo=python&logoColor=white" alt="Matplotlib"></td>
     </tr>
     <tr align="center">
         <td>Seaborn</td>
         <td>0.12+</td>
-        <td>Statistical visualization</td>
+        <td>Статистическая визуализация</td>
         <td><img src="https://img.shields.io/badge/Seaborn-0.12%2B-3776AB?logo=python&logoColor=white" alt="Seaborn"></td>
     </tr>
     <tr align="center">
         <td>Jupyter</td>
         <td>1.0+</td>
-        <td>Interactive development</td>
+        <td>Интерактивная разработка</td>
         <td><img src="https://img.shields.io/badge/Jupyter-1.0%2B-F37626?logo=jupyter&logoColor=white" alt="Jupyter"></td>
     </tr>
 </table>
@@ -186,153 +186,156 @@ The project demonstrates various approaches to solving ML problems:
 
 ---
 
-## 📁 Project Structure
+## 📁 Структура проекта
 
 ```bash
 introduction-to-ml-models/
-├── .venv/                          # Python virtual environment
-├── data/                           # Source data
-│   ├── images.csv                  # MNIST dataset in CSV format
-│   ├── satisfaction_survey.csv     # Airline satisfaction survey
-│   └── student_mat.csv             # Student performance data
-├── data_decision_tree/             # Prepared data for trees
+├── .venv/                          # Виртуальное окружение Python
+├── data/                           # Исходные данные
+│   ├── images.csv                  # MNIST датасет в CSV формате
+│   ├── satisfaction_survey.csv     # Опрос удовлетворённости авиаперелётом
+│   └── student_mat.csv             # Данные об успеваемости учеников
+├── data_decision_tree/             # Подготовленные данные для деревьев
 │   ├── x_test_data.csv
 │   ├── x_train_data.csv
 │   ├── y_test_data.csv
 │   └── y_train_data.csv
-├── data_linear_regression/         # Prepared data for linear regression
+├── data_linear_regression/         # Подготовленные данные для линейной регрессии
 │   ├── x_test_data.csv
 │   ├── x_train_data.csv
 │   ├── y_test_data.csv
 │   └── y_train_data.csv
-├── data_logistic_regression/       # Prepared data for logistic regression
+├── data_logistic_regression/       # Подготовленные данные для логистической регрессии
 │   ├── x_test_data.csv
 │   ├── x_train_data.csv
 │   ├── y_test_data.csv
 │   └── y_train_data.csv
-├── en_version/                     # English version of the project
-│   ├── decision_tree/              # Decision tree and random forest implementation
-│   │   ├── data_analysis.py        # Data analysis
-│   │   ├── decision_tree.ipynb     # Jupyter notebook with comprehensive research
-│   │   ├── data_description.txt    # Data description
-│   │   └── model.py                # Machine learning model
-│   ├── info_about_ml/              # Theoretical materials
-│   │   ├── decision_tree.md        # Materials on decision tree and random forest
-│   │   ├── linear_regression.md    # Materials on linear regression
-│   │   └── logistic_regression.md  # Materials on logistic regression
-│   ├── linear_regression/          # Linear regression implementation
+├── en_version/                     # Английская версия проекта
+│   ├── decision_tree/              # Реализация дерева принятия решений и случайного леса
+│   │   ├── data_analysis.py        # Анализ данных
+│   │   ├── decision_tree.ipynb     # Jupyter ноутбук с комплексным исследованием
+│   │   ├── data_description.txt    # Описание данных
+│   │   └── model.py                # Модель машинного обучения
+│   ├── info_about_ml/              # Теоретические материалы
+│   │   ├── decision_tree.md        # Материалы о дереве принятия решений и случайном лесе
+│   │   ├── linear_regression.md    # Материалы о линейной регрессии
+│   │   └── logistic_regression.md  # Материалы о логистической регрессии
+│   ├── linear_regression/          # Реализация линейной регрессии
 │   │   ├── data_analysis.py
 │   │   ├── linear_regression.ipynb
 │   │   ├── data_description.txt
 │   │   └── model.py
-│   └── logistic_regression/        # Logistic regression implementation
+│   └── logistic_regression/        # Реализация логистической регрессии
 │       ├── data_analysis.py
 │       ├── logistic_regression.ipynb
 │       ├── data_description.txt
 │       └── model.py
-├── ru_version/                     # Russian version of the project
-│   ├── decision_tree/              # Decision tree and random forest implementation
-│   │   ├── data_analysis.py        # Data analysis
-│   │   ├── decision_tree.ipynb     # Jupyter notebook with comprehensive research
-│   │   ├── data_description.txt    # Data description
-│   │   └── model.py                # Machine learning model
-│   ├── info_about_ml/              # Theoretical materials
-│   │   ├── decision_tree.md        # Materials on decision tree and random forest
-│   │   ├── linear_regression.md    # Materials on linear regression
-│   │   └── logistic_regression.md  # Materials on logistic regression
-│   ├── linear_regression/          # Linear regression implementation
+├── ru_version/                     # Русская версия проекта
+│   ├── decision_tree/              # Реализация дерева принятия решений и случайного леса
+│   │   ├── data_analysis.py        # Анализ данных
+│   │   ├── decision_tree.ipynb     # Jupyter ноутбук с комплексным исследованием
+│   │   ├── data_description.txt    # Описание данных
+│   │   └── model.py                # Модель машинного обучения
+│   ├── info_about_ml/              # Теоретические материалы
+│   │   ├── decision_tree.md        # Материалы о дереве принятия решений и случайном лесе
+│   │   ├── linear_regression.md    # Материалы о линейной регрессии
+│   │   └── logistic_regression.md  # Материалы о логистической регрессии
+│   ├── linear_regression/          # Реализация линейной регрессии
 │   │   ├── data_analysis.py
 │   │   ├── linear_regression.ipynb
 │   │   ├── data_description.txt
 │   │   └── model.py
-│   └── logistic_regression/        # Logistic regression implementation
+│   └── logistic_regression/        # Реализация логистической регрессии
 │       ├── data_analysis.py
 │       ├── logistic_regression.ipynb
 │       ├── data_description.txt
 │       └── model.py
-├── .gitignore                      # Files and directories ignored by git
-├── LICENSE                         # Project license
-├── README.md                       # Project documentation in English
-├── README.ru.md                    # Project documentation in Russian
-└── requirements.txt                # Project dependencies
+├── .gitignore                      # Файлы и директории, игнорируемые git
+├── LICENSE                         # Лицензия проекта
+├── README.md                       # Документация проекта на английском
+├── README.ru.md                    # Документация проекта на русском
+└── requirements.txt                # Зависимости проекта
 ```
 
 ---
 
-## Quick Start
+## Быстрый старт
 
-### 📋 Prerequisites
-- Python 3.10 or newer
-- Using a virtual environment is recommended
+### 📋 Предварительные требования
+- Python 3.10 или новее
+- Рекомендуется использование виртуального окружения
 
-### ⚙️ Installation and Setup
-1. Clone the project repository:
+### ⚙️ Установка и настройка
+1. Клонируйте репозиторий проекта:
+
 ```bash
 git clone https://github.com/MordaRedFox/introduction-to-ml-models.git
 cd introduction-to-ml-models
 ```
 
-2. Create and activate a virtual environment:
+2. Создайте и активируйте виртуальное окружение:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # Linux/macOS
-# or
+# или
 .venv\Scripts\activate     # Windows
 ```
 
-3. Install dependencies:
+3. Установите зависимости:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### Using Individual Models
-Each model is located in a separate directory and contains:
-- `data_description.txt` - data description
-- `data_analysis.py` - data analysis
-- `model.py` - ML model implementation
-- `*.ipynb` - interactive notebook with full research (data analysis and model)
+### Использование отдельных моделей
+Каждая модель находится в отдельной директории и содержит:
+- `data_description.txt` - описание данных
+- `data_analysis.py` - анализ данных
+- `model.py` - реализация модели ML
+- `*.ipynb` - интерактивный ноутбук с полным исследованием (анализ данных и модель)
 
 ---
 
-## 📝 Key Results
+## 📝 Ключевые результаты
 
-### 📈 Linear Regression (Grade Prediction)
-- **Goal**: accurate prediction of student's final grade
-- **Metrics**: R², MSE, MAE
-- **Result**: key factors affecting academic performance were identified and a model with sufficiently accurate predictions was created
+### 📈 Линейная регрессия (Прогнозирование оценок)
+- **Цель**: точное предсказание итоговой оценки ученика
+- **Метрики**: R², MSE, MAE
+- **Результат**: выявлены ключевые факторы влияния на успеваемость и создана модель с достаточно точными предсказаниями
 
-### ✈️ Logistic Regression (Satisfaction Analysis)
-- **Goal**: interpretation of flight satisfaction factors
-- **Metrics**: Accuracy, Precision, Recall, F1-score
-- **Result**: the most significant parameters for service improvement were determined
+### ✈️ Логистическая регрессия (Анализ удовлетворённости)
+- **Цель**: интерпретация факторов удовлетворённости полётом
+- **Метрики**: Accuracy, Precision, Recall, F1-score
+- **Результат**: определены наиболее значимые параметры для улучшения сервиса
 
-### 🔢 Decision Tree and Random Forest (Digit Recognition)
-- **Goal**: classification of handwritten digits without convolutional networks
-- **Metrics**: Accuracy, Precision, Recall, F1-score
-- **Result**: Random Forest showed the highest classification accuracy (over 95%)
+### 🔢 Дерево принятия решений и Случайный лес (Распознавание цифр)
+- **Цель**: классификация рукописных цифр без свёрточных сетей
+- **Метрики**: Accuracy, Precision, Recall, F1-score
+- **Результат**: Случайный лес показал наивысшую точность классификации (более 95%)
 
-### 🗂️ Educational Materials
-The project includes detailed theoretical materials for each algorithm with practical code examples:
-- 📖 **Linear Regression** - mathematical foundations, least squares method, gradient descent, quality metrics (MSE, R²), regularization (Ridge, Lasso), checking statistical assumptions and residual analysis
-- 📖 **Logistic Regression** - sigmoid function, maximum likelihood estimation, coefficient interpretation through odds ratios, confusion matrix, optimal classification threshold selection and handling class imbalance
-- 📖 **Decision Tree and Random Forest** - tree building algorithms, splitting criteria (Gini, entropy), combating overfitting, bagging, feature importance estimation and comparison with linear models
-- 📖 **Machine Learning** - types of ML tasks, exploratory data analysis, feature preparation, hyperparameter tuning (Grid Search, Random Search) and model evaluation methods with confidence intervals
-
----
-
-## ⚠️ Important Note
-This project was developed by a beginner self-taught programmer. The code may contain:
-- ❌ Errors and bugs
-- ⚡ Suboptimal solutions
-- 🛡️ Architectural shortcomings
+### 🗂️ Образовательные материалы
+Проект включает подробные теоретические материалы по каждому алгоритму с практическими примерами кода:
+- 📖 **Линейная регрессия** - математические основы, метод наименьших квадратов, градиентный спуск, метрики качества (MSE, R²), регуляризация (Ridge, Lasso), проверка статистических предположений и анализ остатков
+- 📖 **Логистическая регрессия** - сигмоидная функция, максимизация правдоподобия, интерпретация коэффициентов через шансы (Odds Ratio), матрица ошибок, подбор оптимального порога классификации и работа с дисбалансом классов
+- 📖 **Дерево принятия решений и случайный лес** - алгоритмы построения деревьев, критерии разделения (Джини, энтропия), борьба с переобучением, бэггинг, оценка важности признаков и сравнение с линейными моделями
+- 📖 **Машинное обучение** - типы ML задач, исследовательский анализ данных, подготовка признаков, подбор гиперпараметров (Grid Search, Random Search) и методы оценки качества моделей с доверительными интервалами
 
 ---
 
-## 📩 Contacts
-I'm open to constructive criticism and suggestions for code improvement. If you found an error or know how to do something better - please contact me!
+## ⚠️ Важное примечание
+Этот проект был разработан начинающим программистом-самоучкой. Код может содержать:
+- ❌ Ошибки и баги
+- ⚡ Неоптимальные решения
+- 🛡️ Недочёты в архитектуре
+
+---
+
+## 📩 Контакты
+Я открыт для конструктивной критики и предложений по улучшению кода. Если вы нашли ошибку или знаете, как сделать что-то лучше - пожалуйста, свяжитесь со мной!
 
 [![Telegram](https://img.shields.io/badge/-MordaRedFox-0088cc?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/MordaRedFox)
 &nbsp;
 [![Email](https://img.shields.io/badge/-mordaredfox@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mordaredfox@gmail.com)
 
-> Machine learning is not magic, it's mathematics, code, and lots of quality data
+> Машинное обучение — это не магия, это математика, код и много качественных данных
